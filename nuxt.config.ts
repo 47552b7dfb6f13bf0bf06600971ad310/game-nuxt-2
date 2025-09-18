@@ -59,17 +59,7 @@ export default defineNuxtConfig({
     preference: 'dark'
   },
 
-  modules: [
-    '@pinia/nuxt', 
-    '@nuxt/image', 
-    '@nuxt/ui', 
-    '@nuxtjs/google-fonts',
-    'nuxt-tiptap-editor', 
-    '@nuxtjs/robots',
-    'nuxt-rate-limit',
-    'nuxt-swiper', 
-    '@vite-pwa/nuxt'
-  ],
+  modules: ['@pinia/nuxt', '@nuxt/image', '@nuxt/ui', '@nuxtjs/google-fonts', 'nuxt-tiptap-editor', '@nuxtjs/robots', 'nuxt-rate-limit', 'nuxt-swiper', '@vite-pwa/nuxt', '@nuxtjs/device'],
 
   site: {
     url: process.env.CLIENT_URL, 

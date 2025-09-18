@@ -29,7 +29,7 @@ export default defineAppConfig({
       background: 'bg-gray-1000',
       divide: 'divide-gray-100 dark:divide-gray-900',
       ring: 'ring-0',
-      base: 'relative overflow-x-hidden overflow-visible',
+      base: 'relative overflow-x-hidden overflow-visible z-[1]',
       rounded: 'rounded-xl',
     },
 

@@ -1,8 +1,8 @@
 <template>
   <NuxtLayout>
+    <UiEffectBg v-if="!isMobileOrTablet" />
     <NuxtLoadingIndicator :height="2" />
     <UNotifications />
-
     <NuxtPage />
     
     <SocketNoticeReload />
@@ -12,6 +12,7 @@
 </template>
 
 <script setup>
+const { isMobileOrTablet } = useDevice()
 const runtimeConfig = useRuntimeConfig()
 const configStore = useConfigStore()
 const mode = useColorMode()

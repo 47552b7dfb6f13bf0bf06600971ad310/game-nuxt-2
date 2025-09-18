@@ -1,5 +1,5 @@
 <template>
-  <UiFlex class="box-red rounded-xl overflow-hidden gap-2 py-2 px-0 cursor-pointer" @click="action">
+  <UiFlex class="box-red rounded-xl overflow-hidden gap-2 py-2 px-0 cursor-pointer relative" @click="action">
     <UiFlex class="inline-flex h-[90%] w-[20%] ml-2">
       <UiImg src="/images/icon/promo-reg.png" w="1" h="1" img-w="200" img-h="200" img-size="200px" class="w-full" />
     </UiFlex>

@@ -1,5 +1,5 @@
 <template>
-  <UiFlex class="box-blue rounded-xl overflow-hidden gap-2 py-2 px-0">
+  <UiFlex class="box-blue rounded-xl overflow-hidden gap-2 py-2 px-0 relative">
     <UiFlex class="inline-flex h-[90%] w-[20%] ml-2">
       <UiImg src="/images/icon/support.png" w="1" h="1" img-size="200px" class="w-full" />
     </UiFlex>

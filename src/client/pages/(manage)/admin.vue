@@ -12,7 +12,7 @@
         </UFormGroup>
 
         <UiFlex justify="end" class="mt-4">
-          <UButton color="yellow" type="submit" :loading="loading">Xác nhận</UButton>
+          <UButton class="bg-main-red" type="submit" :loading="loading">Xác nhận</UButton>
         </UiFlex>
       </UForm>
     </UCard>

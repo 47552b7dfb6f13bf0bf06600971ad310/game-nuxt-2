@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <UForm @submit="submit">
       <UiFlex justify="between" class="mb-2">
         <UiText weight="semibold" class="text-title">Bảng Xếp Hạng</UiText>

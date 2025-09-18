@@ -1,5 +1,5 @@
 <template>
-  <UiFlex class="box-orange rounded-xl overflow-hidden gap-2 py-2 px-0 cursor-pointer" @click="navigateTo('/payment')">
+  <UiFlex class="box-orange rounded-xl overflow-hidden gap-2 py-2 px-0 cursor-pointer relative" @click="navigateTo('/payment')">
     <UiFlex class="inline-flex h-[90%] w-[20%] ml-2">
       <UiImg src="/images/icon/promo-second.png" w="1" h="1" img-size="200px" class="w-full" />
     </UiFlex>

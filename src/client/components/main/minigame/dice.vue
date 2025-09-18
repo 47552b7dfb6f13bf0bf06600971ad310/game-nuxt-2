@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <UiFlex justify="between" class="gap-2" v-if="!!authStore.isLogin">
       <UiText weight="semibold" class="text-title">Số Dư Xu Của Bạn</UiText>
       <DataUserCoin />

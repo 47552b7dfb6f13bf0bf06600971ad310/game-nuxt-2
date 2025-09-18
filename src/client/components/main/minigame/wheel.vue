@@ -1,38 +1,36 @@
 <template>
-  <div>
-    <div>
-      <UiFlex justify="between" class="gap-2 mb-8" v-if="!!authStore.isLogin">
-        <UiText weight="semibold" class="text-title">Lượt Quay Của Bạn</UiText>
-        <DataUserWheel v-if="!!authStore.isLogin" />
-      </UiFlex>
+  <div class="relative">
+    <UiFlex justify="between" class="gap-2 mb-8" v-if="!!authStore.isLogin">
+      <UiText weight="semibold" class="text-title">Lượt Quay Của Bạn</UiText>
+      <DataUserWheel v-if="!!authStore.isLogin" />
+    </UiFlex>
+    
+    <DataMinigameWheelBox 
+      :items="items" 
+      :gift-id="gift" 
+      :spin="spin" 
+      @done="doneSpin" 
+      class="mb-6"
+    />
+
+    <UForm :state="state" :validate="validate" @submit="spinWheel" >
+      <UFormGroup label="Máy chủ" name="server" class="grow" v-if="!!authStore.isLogin">
+        <SelectGameServer v-model="state.server" />
+      </UFormGroup>
       
-      <DataMinigameWheelBox 
-        :items="items" 
-        :gift-id="gift" 
-        :spin="spin" 
-        @done="doneSpin" 
-        class="mb-6"
-      />
+      <UFormGroup label="Nhân vật" name="role" class="grow" v-if="!!state.server && !!authStore.isLogin">
+        <SelectGameRole v-model="state.role" :server="state.server" />
+      </UFormGroup>
+      
+      <UiFlex class="gap-1">
+        <USelectMenu size="lg" class="mr-auto min-w-[120px]" v-model="state.times" :options="[1, 5, 10]">
+          <template #label>Quay x{{ state.times }}</template>
+          <template #option="{ option }">Quay x{{ option }}</template>
+        </USelectMenu>
 
-      <UForm :state="state" :validate="validate" @submit="spinWheel" >
-        <UFormGroup label="Máy chủ" name="server" class="grow" v-if="!!authStore.isLogin">
-          <SelectGameServer v-model="state.server" />
-        </UFormGroup>
-        
-        <UFormGroup label="Nhân vật" name="role" class="grow" v-if="!!state.server && !!authStore.isLogin">
-          <SelectGameRole v-model="state.role" :server="state.server" />
-        </UFormGroup>
-        
-        <UiFlex class="gap-1">
-          <USelectMenu size="lg" class="mr-auto min-w-[120px]" v-model="state.times" :options="[1, 5, 10]">
-            <template #label>Quay x{{ state.times }}</template>
-            <template #option="{ option }">Quay x{{ option }}</template>
-          </USelectMenu>
-
-          <UButton type="submit" color="gray" size="lg" class="bg-main-red" :loading="loading">Quay Ngay</UButton>
-        </UiFlex>
-      </UForm>
-    </div>
+        <UButton type="submit" color="gray" size="lg" class="bg-main-red" :loading="loading">Quay Ngay</UButton>
+      </UiFlex>
+    </UForm>
   </div>
 </template>
 
