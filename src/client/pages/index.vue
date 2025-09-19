@@ -1,5 +1,6 @@
 <template>
   <div class="@container">
+    <DataBanner class="mb-2" />
     <DataPromoHome class="mb-2" />
 
     <DataEmpty :loading="loading" text="Không có tin tức" v-if="!!loading || list.length == 0" class="min-h-[300px]"></DataEmpty>

@@ -87,12 +87,12 @@ onMounted(() => {
     function paintPt(pt) {
       pts2.forEach((pt2) => {
         if (!pt.len) return;
-        drawLine(
-          lerp(x + pt2.x * r, pt.x, pt.len * pt.len),
-          lerp(y + pt2.y * r, pt.y, pt.len * pt.len),
-          x + pt2.x * r,
-          y + pt2.y * r
-        );
+        // drawLine(
+        //   lerp(x + pt2.x * r, pt.x, pt.len * pt.len),
+        //   lerp(y + pt2.y * r, pt.y, pt.len * pt.len),
+        //   x + pt2.x * r,
+        //   y + pt2.y * r
+        // );
       });
       drawCircle(pt.x, pt.y, pt.r);
     }
