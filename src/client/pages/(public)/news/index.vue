@@ -4,7 +4,7 @@
 
     <DataEmpty :loading="loading" text="Không có tin tức" v-if="!!loading || list.length == 0" class="min-h-[300px]"></DataEmpty>
 
-    <div class="grid grid-cols-12 gap-4" v-else>
+    <div class="grid grid-cols-12 gap-2" v-else>
       <DataNewsBox 
         v-for="(item, index) in list" 
         :key="index" 
@@ -32,7 +32,7 @@ const list = ref([])
 const loading = ref(true)
 
 const page = ref({
-  size: 12,
+  size: 6,
   current: 1,
   total: 0,
   category: undefined,
