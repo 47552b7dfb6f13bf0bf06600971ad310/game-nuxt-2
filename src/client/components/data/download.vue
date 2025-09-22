@@ -69,7 +69,7 @@ const playWeb = async () => {
 
     loading.value = false
     if(!!runtimeConfig.public.dev) navigateTo('/play')
-    else location.href = `http://game.${runtimeConfig.public.domain}/play`
+    else location.href = `http://play.${runtimeConfig.public.domain}/play`
   }
   catch (e) {
     loading.value = false

@@ -53,7 +53,7 @@ const start = async () => {
     await useAPI('game/public/start')
 
     if(!!runtimeConfig.public.dev) navigateTo('/play')
-    else location.href = `http://game.${runtimeConfig.public.domain}/play`
+    else location.href = `http://play.${runtimeConfig.public.domain}/play`
   }
   catch (e) {
     useTo().navigateToSSL('/')

@@ -200,7 +200,7 @@ const openPlay = async (row) => {
     loading.value.play = false
 
     if(!!runtimeConfig.public.dev) navigateTo('/play/manage')
-    else location.href = `http://game.${runtimeConfig.public.domain}/play/manage`
+    else location.href = `http://play.${runtimeConfig.public.domain}/play/manage`
   }
   catch (e) {
     loading.value.play = false
