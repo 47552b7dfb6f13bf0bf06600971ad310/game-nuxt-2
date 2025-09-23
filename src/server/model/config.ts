@@ -43,6 +43,7 @@ export const DBConfig = (mongoose : Mongoose) => {
       rank: {
         level: { type: Boolean, default: true },
         power: { type: Boolean, default: true },
+        pay: { type: Boolean, default: true },
       }
     },
     enable: {

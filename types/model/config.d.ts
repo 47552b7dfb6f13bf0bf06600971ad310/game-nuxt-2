@@ -45,6 +45,7 @@ export interface IDBConfig {
     rank: {
       level: boolean
       power: boolean
+      pay: boolean
     }
   }
   enable: {
@@ -229,6 +230,7 @@ export interface IDBConfigStore {
     rank: {
       level: boolean
       power: boolean
+      pay: boolean
     }
   }
   enable: {

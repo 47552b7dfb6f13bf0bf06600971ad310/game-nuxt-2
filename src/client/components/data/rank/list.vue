@@ -2,7 +2,7 @@
   <div>
     <DataEmpty :loading="loading" text="Xếp hạng chưa khả dụng" class="min-h-[300px]" v-if="!!loading || list.length == 0"></DataEmpty>
 
-    <div>
+    <div v-else>
       <div class="mt-4 mb-8" v-if="list3.length > 0">
         <UiFlex justify="center" class="max-w-[400px] w-full mx-auto ">
           <UiFlex 

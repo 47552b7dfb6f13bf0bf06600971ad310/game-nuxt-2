@@ -103,9 +103,14 @@
         <UToggle v-model="state.menu.rank.level" />
       </UiFlex>
 
-      <UiFlex justify="between">
+      <UiFlex justify="between" class="mb-4">
         <UiText size="sm">Lực chiến</UiText>
         <UToggle v-model="state.menu.rank.power" />
+      </UiFlex>
+
+      <UiFlex justify="between">
+        <UiText size="sm">Nạp tiền</UiText>
+        <UToggle v-model="state.menu.rank.pay" />
       </UiFlex>
     </UCard>
 
@@ -151,7 +156,8 @@ const state = ref({
     },
     rank: {
       level: false,
-      power: false
+      power: false,
+      pay: false
     }
   }
 })

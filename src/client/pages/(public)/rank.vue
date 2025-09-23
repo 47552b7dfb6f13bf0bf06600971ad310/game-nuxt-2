@@ -28,6 +28,7 @@
       <Transition name="page" mode="out-in">
         <MainRankLevel v-if="tab === 'level'" />
         <MainRankPower v-else-if="tab === 'power'" />
+        <MainRankPay v-else-if="tab === 'pay'" />
       </Transition>
     </div>
   </div>
@@ -49,6 +50,7 @@ const items = computed(() => {
   const list =  []
   if(!!show.value.level) list.push({ label: 'Cấp Độ', type: 'level', icon: 'i-icon-park-solid-level' })
   if(!!show.value.power) list.push({ label: 'Lực Chiến', type: 'power', icon: 'i-game-icons-pointy-sword' })
+  if(!!show.value.pay) list.push({ label: 'Nạp Tiền', type: 'pay', icon: 'i-mdi-payment' })
   return list
 })
 const tab = ref(route.query.type ? route.query.type : (!!items.value[0] ? items.value[0].type : null))
