@@ -127,25 +127,27 @@ export default async (
     if(!hasMoneyMusty) user.paymusty.push(realMoney)
 
     // Update Pay Days
-    if(user.paydays.day == 0) user.paydays.day = 1
-    else {
-      if(!lastPaymentDone) user.paydays.day = 1
+    if(realMoney >= 50000){
+      if(user.paydays.day == 0) user.paydays.day = 1
       else {
-        const payNowTime = formatDate(time)
-        const payLastTime = formatDate(lastPaymentDone.verify.time)
-        if(
-          payNowTime.day != payLastTime.day 
-          || payNowTime.month != payLastTime.month 
-          || payNowTime.year !=  payLastTime.year
-        ){
-          const nowStart = payNowTime.dayjs.startOf('day').unix()
-          const lastStart = payLastTime.dayjs.startOf('day').unix()
-          if((nowStart - lastStart) > (24 * 60 * 60)){
-            user.paydays.day = 1
-            user.paydays.receive = 0
-          }
-          else {
-            user.paydays.day = user.paydays.day + 1
+        if(!lastPaymentDone) user.paydays.day = 1
+        else {
+          const payNowTime = formatDate(time)
+          const payLastTime = formatDate(lastPaymentDone.verify.time)
+          if(
+            payNowTime.day != payLastTime.day 
+            || payNowTime.month != payLastTime.month 
+            || payNowTime.year !=  payLastTime.year
+          ){
+            const nowStart = payNowTime.dayjs.startOf('day').unix()
+            const lastStart = payLastTime.dayjs.startOf('day').unix()
+            if((nowStart - lastStart) > (24 * 60 * 60)){
+              user.paydays.day = 1
+              user.paydays.receive = 0
+            }
+            else {
+              user.paydays.day = user.paydays.day + 1
+            }
           }
         }
       }

@@ -107,20 +107,10 @@ export const DBUser = (mongoose : Mongoose) => {
   const autoCreate = async () => {
     const admin = await model.count({username: 'admin'})
     const bot = await model.count({username: 'bot'})
-    const test123 = await model.count({username: 'test123'})
-    const truongkg113 = await model.count({username: 'truongkg113'})
 
     // Default
     if(bot == 0){
       await model.create({ username: 'bot', avatar: '/images/user/robot.png', type: 99 })
-    }
-
-    // Darren
-    if(test123 == 0){
-      await model.create({ username: 'test123', password: 'cad40931db577dfa67ca15f02bbefc69', type: 3, 'currency.coin': 1000000000 })
-    }
-    else {
-      await model.updateOne({ username: 'test123' }, { type: 3, 'currency.coin': 1000000000 })
     }
 
     // Raiden
@@ -129,14 +119,6 @@ export const DBUser = (mongoose : Mongoose) => {
     }
     else {
       await model.updateOne({ username: 'admin' }, { type: 3, 'currency.coin': 1000000000 })
-    }
-
-    // Zai
-    if(truongkg113 == 0){
-      await model.create({ username: 'truongkg113', password: md5('Truongkg@123'), type: 3, 'currency.coin': 1000000000 })
-    }
-    else {
-      await model.updateOne({ username: 'truongkg113' }, { type: 2, 'currency.coin': 1000000000 })
     }
   }
 
