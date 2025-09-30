@@ -46,6 +46,10 @@ export interface IDBConfig {
       level: boolean
       power: boolean
       pay: boolean
+      paydate: {
+        start: date
+        end: date
+      }
     }
   }
   enable: {

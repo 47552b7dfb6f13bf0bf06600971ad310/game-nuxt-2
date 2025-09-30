@@ -1,15 +1,6 @@
 <template>
   <div class="relative">
-    <UForm @submit="submit">
-      <UiFlex class="mb-2 flex-col md:flex-row justify-start md:justify-between gap-2">
-        <UiText weight="semibold" class="text-title w-full md:w-auto">Bảng Xếp Hạng</UiText>
-
-        <UiFlex class="gap-1 w-full md:w-auto">
-          <SelectDate v-model="page.start" placeholder="Từ ngày" size="lg" class="grow" />
-          <SelectDate v-model="page.end" placeholder="Đến ngày" size="lg" class="grow" />
-        </UiFlex>
-      </UiFlex>
-    </UForm>
+    <UiText weight="semibold" class="text-title w-full md:w-auto">Bảng Xếp Hạng</UiText>
 
     <div>
       <DataEmpty :loading="loading" text="Bảng xếp hạng không khả dụng" class="min-h-[300px]" v-if="!!loading || list.length == 0"></DataEmpty>
@@ -91,23 +82,10 @@ const list7 = computed(() => {
   return list.value.filter((item, index) => index > 2)
 })
 
-const page = ref({
-  start: null,
-  end: null
-})
-watch(() => page.value.start, (val) => {
-  if(!!val && !!page.value.end) return submit()
-  if(!val && !page.value.end) return submit()
-})
-watch(() => page.value.end, (val) => {
-  if(!!val && !!page.value.start) return submit()
-  if(!val && !page.value.start) return submit()
-})
-
-const submit = async () => {
+const getList = async () => {
   try {
     loading.value = true
-    const data = await useAPI('rank/public/pay', JSON.parse(JSON.stringify(page.value)))
+    const data = await useAPI('rank/public/pay')
 
     list.value = data
     loading.value = false
@@ -117,4 +95,6 @@ const submit = async () => {
     loading.value = false
   }
 }
+
+onMounted(() => setTimeout(getList, 1))
 </script>

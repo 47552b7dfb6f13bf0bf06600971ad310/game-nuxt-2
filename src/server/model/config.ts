@@ -44,6 +44,10 @@ export const DBConfig = (mongoose : Mongoose) => {
         level: { type: Boolean, default: true },
         power: { type: Boolean, default: true },
         pay: { type: Boolean, default: true },
+        paydate: {
+          start: { type: Date },
+          end: { type: Date },
+        }
       }
     },
     enable: {

@@ -1,13 +1,13 @@
-import type { IAuth } from "~~/types"
+import type { IDBConfig } from "~~/types"
 
 export default defineEventHandler(async (event) => {
   try {
-    const { start, end } = await readBody(event)
-    if(!start && !end) throw 'Vui lòng chọn đủ mốc thời gian'
+    const config = await DB.Config.findOne().select('menu.rank') as IDBConfig
+    if(!config) throw 'Không tìm thấy cấu hình trang'
 
     const match : any = { money: { $gt: 0 } }
-    const startDay : any = DayJS(start).startOf('date')
-    const endDay : any = DayJS(end).endOf('date')
+    const startDay : any = DayJS(config.menu.rank.paydate.start || null).startOf('date')
+    const endDay : any = DayJS(config.menu.rank.paydate.end || null).startOf('date')
     match['time'] = { $gte: new Date(startDay['$d']), $lte: new Date(endDay['$d']) }
 
     const data = await DB.Payment.aggregate([

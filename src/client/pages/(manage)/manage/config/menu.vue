@@ -108,10 +108,17 @@
         <UToggle v-model="state.menu.rank.power" />
       </UiFlex>
 
-      <UiFlex justify="between">
-        <UiText size="sm">Nạp tiền</UiText>
-        <UToggle v-model="state.menu.rank.pay" />
-      </UiFlex>
+      <div>
+        <UiFlex justify="between" class="mb-2">
+          <UiText size="sm">Nạp tiền</UiText>
+          <UToggle v-model="state.menu.rank.pay" />
+        </UiFlex>
+        
+        <UiFlex justify="end" class="gap-1" v-if="!!state.menu.rank.pay">
+          <SelectDate v-model="state.menu.rank.paydate.start" placeholder="Từ ngày" size="md" />
+          <SelectDate v-model="state.menu.rank.paydate.end" placeholder="Đến ngày" size="md" />
+        </UiFlex>
+      </div>
     </UCard>
 
     <UiFlex justify="end" class="mt-4">
@@ -157,7 +164,11 @@ const state = ref({
     rank: {
       level: false,
       power: false,
-      pay: false
+      pay: false,
+      paydate: {
+        start: null,
+        end: null
+      }
     }
   }
 })
@@ -165,6 +176,7 @@ const state = ref({
 const getConfig = async () => {
   const config = await useAPI('config/manage/get')
   state.value = Object.assign(state.value, config)
+  state.value.menu.rank.paydate = !!config.menu.rank.paydate ? config.menu.rank.paydate : { start: null, end: null }
   load.value = false
 }
 
