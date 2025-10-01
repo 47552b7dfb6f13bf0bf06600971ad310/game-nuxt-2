@@ -17,7 +17,7 @@
             >
               <UiText mini align="center" class="max-w-[99%]" size="sm" weight="semibold">{{ list3[1].user.username }}</UiText>
               <UiText mini align="center" class="max-w-[99%]" weight="semibold">
-                {{ list3[1].value }}
+                {{ useMoney().miniMoney(list3[1].value) }}
               </UiText>
             </UiFlex>
 
@@ -30,7 +30,7 @@
             >
               <UiText mini align="center" class="max-w-[99%]" size="sm" weight="semibold">{{ list3[0].user.username }}</UiText>
               <UiText mini align="center" class="max-w-[99%]" weight="semibold">
-                {{ list3[0].value }}
+                {{ useMoney().miniMoney(list3[0].value) }}
               </UiText>
             </UiFlex>
 
@@ -43,7 +43,7 @@
             >
               <UiText mini align="center" class="max-w-[99%]" size="sm" weight="semibold">{{ list3[2].user.username }}</UiText>
               <UiText mini align="center" class="max-w-[99%]" weight="semibold">
-                {{ list3[2].value }}
+                {{ useMoney().miniMoney(list3[2].value) }}
               </UiText>
             </UiFlex>
           </UiFlex>
@@ -60,7 +60,7 @@
             </div>
 
             <UBadge color="gray" variant="soft" class="ml-auto px-3" size="md">
-              {{ item.value }}
+              {{ useMoney().toMoney(item.value) }} điểm
             </UBadge>
           </UiFlex>
         </UiFlex>

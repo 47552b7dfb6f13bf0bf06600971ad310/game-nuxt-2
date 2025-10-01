@@ -52,16 +52,9 @@ export default defineEventHandler(async (event) => {
       { $unwind: { path: "$user" }},
       { $sort: { value: -1 } },
       { $limit: 10 },
-      {
-        $addFields: {
-          value: {
-            $concat: [
-              { $substrCP: [ { $toString: "$value" }, 0, 2 ] },
-              "***"
-            ]
-          }
-        }
-      }
+      { $addFields: {
+        value: { $divide: ["$value", 10] }
+      }}
     ])
 
     return resp(event, { result: data })
